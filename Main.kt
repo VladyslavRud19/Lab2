@@ -46,43 +46,43 @@ fun main() {
     
     // Знайти усі транзакції за 2011 рік і посортувати за вартістю (від малого до високого)
     val transactions2011 = transactions.filter { it.year == 2011 }.sortedBy { it.value }
-    println("")
+    println("Транзакції за 2011 рік: $transactions2011")
 
     // У яких унікальних містах працюють трейдери?
     val uniqueCities = transactions.map { it.trader.city }.toSet()
-    println("")
+    println("Унікальні міста трейдерів: $uniqueCities")
 
     // Знайдіть усіх трейдерів із Кембриджа та відсортуйте їх за назвою
     val cambridgeTraders = transactions.map { it.trader }.filter { it.city == "Cambridge" }.toSet().sortedBy { it.name }
-    println("")
+    println("Трейдери з Кембриджа: $cambridgeTraders")
 
     // Поверніть рядок імен усіх трейдерів, відсортованих за алфавітом
     val traderNames = transactions.map { it.trader.name }.toSet().sorted().joinToString(", ")
-    println("")
+    println("Імена трейдерів за алфавітом: $traderNames")
 
     // Чи є трейдери в Мілані?
     val hasMilanTraders = transactions.any { it.trader.city == "Milan" }
-    println("")
+    println("Чи є трейдери в Мілані? $hasMilanTraders")
 
     // Виведіть у консоль всі значення транзакцій від трейдерів, які проживають у Кембриджі
     val cambridgeTransactions = transactions.filter { it.trader.city == "Cambridge" }.map { it.value }
-    println("")
+    println("Транзакції трейдерів з Кембриджа: $cambridgeTransactions")
 
     // Знайдіть транзакцію з найбільшою вартістю
     val maxTransaction = transactions.maxByOrNull{ it.value }      
-    println("")
+    println("Транзакція з найбільшою вартістю: $maxTransaction")
 
     // Згрупуйте всі транзакції за валютою
     val transactionsByCurrency = transactions.groupBy{ it.currency }     
-    println("")
+    println("Транзакції за валютою: $transactionsByCurrency")
 
     // Знайдіть суму транзакцій у гривнях
     val sumUAH = transactions.filter { it.currency == UAH }.sumOf { it.value }
-    println("")
+    println("Сума транзакцій у гривнях: $sumUAH")
 
     // Створіть рядок, у якому буде виведена послідовність транзакцій відсортована за датою у наступному вигляді (<назва параметру, який потрібно вставити>)
     val sortedTransactions = transactions.sortedWith(compareBy({ it.year }, { it.month }))
     val transactionSequence = sortedTransactions.mapIndexed{index, transaction -> "${index + 1}. ${transaction.month}-${transaction.year}: ${transaction.value} ${transaction.currency}"
     }.joinToString(" -> ")         
-    println("")
+    println("Послідовність транзакцій: $transactionSequence")
 }
