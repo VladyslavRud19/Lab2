@@ -31,7 +31,6 @@ fun main() {
     val foldRightResult = list.foldRight(0) { x, acc -> acc + x }
     println("FoldRight Result: $foldRightResult")
 
-fun main() {
     val raoul = Trader("Raoul", "Cambridge")
     val mario = Trader("Mario", "Milan")
     val alan = Trader("Alan", "Cambridge")
