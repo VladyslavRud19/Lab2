@@ -9,6 +9,28 @@ enum class Currency {
     UAH, USD, EUR
 }
 
+// Завдання 1 
+fun main() {  
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val squares = numbers.map { it * it }
+    println("Список квадратів: $squares")
+    
+    val sumOfSquares = squares.sum()
+    println("Сума квадратів: $sumOfSquares")
+
+    val arr1 = arrayOf(1, 2, 3)
+    val arr2 = arrayOf(3, 4)
+    val pairs = arr1.flatMap { a -> arr2.map { b -> arrayOf(a, b) } }
+    println("Пари чисел: ${pairs.joinToString { it.contentToString() }}")
+    
+    val list = listOf(1, 2, 3)
+    
+    val foldResult = list.fold(0) { acc, x -> acc + x }
+    println("Fold Result: $foldResult") 
+    
+    val foldRightResult = list.foldRight(0) { x, acc -> acc + x }
+    println("FoldRight Result: $foldRightResult")
+
 fun main() {
     val raoul = Trader("Raoul", "Cambridge")
     val mario = Trader("Mario", "Milan")
